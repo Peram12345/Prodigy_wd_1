@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Navigation Menu</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #ffcc00;
+        }
+        nav.scrolled {
+            background-color:  #a3e4d7 ;
+        }
+
+        nav.scrolled2 {
+            background-color:  #f4d03f ;
+        }
+
+        nav.scrolled3 {
+            background-color: #a569bd ;
+        }
+
+        nav.scrolled4 {
+            background-color:  #ba4a00 ;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <div style="height: 15000px; padding: 20px;">
+        <p>Scroll down to see the navigation menu change its style!</p>
+    </div>
+
+    <script>
+        window.addEventListener("scroll", function() {
+            const nav = document.querySelector("nav");
+            const scrollPosition = window.scrollY;
+
+            if (scrollPosition >= 50 && scrollPosition < 3000) {
+                nav.classList.add("scrolled");
+                nav.classList.remove("scrolled2", "scrolled3", "scrolled4");
+            } else if (scrollPosition >= 3000 && scrollPosition < 6000) {
+                nav.classList.remove("scrolled");
+                nav.classList.add("scrolled2");
+                nav.classList.remove("scrolled3", "scrolled4");
+            } else if (scrollPosition >= 6000 && scrollPosition < 9000) {
+                nav.classList.remove("scrolled", "scrolled2");
+                nav.classList.add("scrolled3");
+                nav.classList.remove("scrolled4");
+            } else if (scrollPosition >= 9000) {
+                nav.classList.remove("scrolled", "scrolled2", "scrolled3");
+                nav.classList.add("scrolled4");
+            } else {
+                nav.classList.remove("scrolled", "scrolled2", "scrolled3", "scrolled4");
+            }
+        });
+    </script>
+</body>
+</html>
